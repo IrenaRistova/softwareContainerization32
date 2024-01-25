@@ -2,7 +2,7 @@ import express, { response } from 'express';
 import { PORT, mongoDBURL} from './config.js';
 import mongoose from 'mongoose';
 import productsRoute from './routes/productsRoute.js'
-// import cors from 'cors';
+import cors from 'cors';
 
 
 const app = express();
@@ -12,8 +12,15 @@ app.use(express.json());
 
 //middleware gor handling CORS policy
 //Option 1: Allow all origins wiht default of cors()
-
 // app.use(cors())
+
+//Option 2: ALlow Custom origins // now only clients with this origin can access server
+app.use(cors({
+  origin:'http://localhost:3001',
+  methods: ['GET','POST','PUT','DELETE'],
+  allowedHeaders:['Content-Type'],
+})
+);
 
 app.get('/', (request, response) => {
   console.log(request);

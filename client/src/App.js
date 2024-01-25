@@ -1,14 +1,14 @@
 // import logo from './logo.svg';
 import {useEffect} from 'react';
 import './App.css';
-// import axios from 'axios';
+import axios from 'axios';
 
 function App() {
-  // useEffect(()=> {
-  //   axios.get('http://localhost:6001/products').then(
-  //     response => console.log(response)
-  //   )
-  // }, [])
+  useEffect(()=> {
+    axios.get('http://localhost:6001/products').then(
+      response => console.log(response)
+    )
+  }, [])
 
   return (
     <div className="App">
