@@ -68,10 +68,10 @@ const Home = () => {
                     <Link to={"/products/details/${product._id}"}>
                       <BsInfoCircle className="text-2xl text-green-800" />
                     </Link>
-                    <Link to={"/products/details/${product._id}"}>
+                    <Link to={"/products/edit/${product._id}"}>
                       <AiOutlineEdit className="text-2xl text-yellow-600" />
                     </Link>
-                    <Link to={"/products/details/${product._id}"}>
+                    <Link to={"/products/delete/${product._id}"}>
                       <MdOutlineDelete className="text-2xl text-red-600" />
                     </Link>
                   </div>
