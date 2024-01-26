@@ -3,6 +3,8 @@ import {Product} from '../models/productModel.js'
 
 const router = express.Router();
 
+console.log("ghe78fh98wg9ehs7")
+
 
 // //Route to save a new product
 router.post('/', async (request, response) => {
