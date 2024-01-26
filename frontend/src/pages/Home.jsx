@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:6001/products")
+      .get(`http://localhost:6001/products`)
       .then((response) => {
         setProducts(response.data.data);
         setLoading(false);
