@@ -12,9 +12,9 @@ const ShowProduct = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:6001/products`)
+      .get(`http://localhost:6001/products/${id}`)
       .then((response) => {
-        setProduct(response.data.data);
+        setProduct(response.data);
         setLoading(false);
       })
       .catch((error) => {
