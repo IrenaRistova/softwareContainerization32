@@ -20,4 +20,4 @@ const productSchema = mongoose.Schema(
     }
 );
 
-export const Product = mongoose.model('Pump', productSchema);
+export const Product = mongoose.model('Product', productSchema);
