@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButtom";
 import Spinner from "../components/Spinner";
 
@@ -9,10 +9,11 @@ const ShowProduct = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  useEffect(() => {
+  useEffect(() => { 
+
     setLoading(true);
     axios
-      .get(`http://localhost:6001/products`)
+      .get(`http://localhost:6001/products/${id}`)
       .then((response) => {
         setProduct(response.data.data);
         setLoading(false);
