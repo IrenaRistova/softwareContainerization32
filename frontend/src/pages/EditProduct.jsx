@@ -6,9 +6,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
 const EditProduct = () => {
-  const [productName, setProductName] = useState("");
-  const [size, setSize] = useState("");
-  const [expiryYear, setExpiryYear] = useState("");
+  const [productName, setProductName] = useState(``);
+  const [size, setSize] = useState(``);
+  const [expiryYear, setExpiryYear] = useState(``);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();

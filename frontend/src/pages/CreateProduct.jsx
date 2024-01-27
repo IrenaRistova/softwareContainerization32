@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
 const CreateProducts = () => {
-  const [productName, setProductName] = useState("");
-  const [size, setSize] = useState("");
-  const [expiryYear, setExpiryYear] = useState("");
+  const [productName, setProductName] = useState(``);
+  const [size, setSize] = useState(``);
+  const [expiryYear, setExpiryYear] = useState(``);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -17,7 +17,7 @@ const CreateProducts = () => {
     const data = {
       productName,
       size,
-      expiryYearYear,
+      expiryYear,
     };
     setLoading(true);
     axios
