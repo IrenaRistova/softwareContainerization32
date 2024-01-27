@@ -17,7 +17,7 @@ const EditProduct = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:6001/books/${id}`)
+      .get(`http://localhost:6001/products/${id}`)
       .then((response) => {
         setSize(response.data.size);
         setExpiryYear(response.data.expiryYear);
@@ -64,7 +64,7 @@ const EditProduct = () => {
           <input
             type="text"
             value={productName}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => setProductName(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2 w-full"
           />
         </div>
@@ -73,7 +73,7 @@ const EditProduct = () => {
           <input
             type="text"
             value={size}
-            onChange={(e) => setAuthor(e.target.value)}
+            onChange={(e) => setSize(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2  w-full "
           />
         </div>
@@ -82,7 +82,7 @@ const EditProduct = () => {
           <input
             type="number"
             value={expiryYear}
-            onChange={(e) => setPublishYear(e.target.value)}
+            onChange={(e) => setExpiryYear(e.target.value)}
             className="border-2 border-gray-500 px-4 py-2  w-full "
           />
         </div>

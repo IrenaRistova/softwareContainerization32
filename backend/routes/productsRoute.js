@@ -52,8 +52,7 @@ router.get('/:id', async (request, response) => {
     try{
   
       const {id} = request.params;
-      // const product = await Product.findById(id);
-      const product = await Product.find({ _id: id });
+      const product = await Product.findById(id);
   
       return response.status(200).json({
         count: product.length,
