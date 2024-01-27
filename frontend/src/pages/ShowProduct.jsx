@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import BackButton from "../components/BackButtom";
+import BackButton from "../components/BackButton";
 import Spinner from "../components/Spinner";
 
 const ShowProduct = () => {
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
-
+  const idString = id.toString();
   useEffect(() => {
     setLoading(true);
     axios
       .get(`http://localhost:6001/products/${id}`)
+      // .get(`http://localhost:6001/products/${idString}`)
       .then((response) => {
         setProduct(response.data);
         setLoading(false);
