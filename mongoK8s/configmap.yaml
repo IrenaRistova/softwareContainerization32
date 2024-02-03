@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mongo-config
-  labels:
-    app: mongodb
-data:
-  MONGO_DB: WebShop-MERN
-  MONGO_USER: admin
