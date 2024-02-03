@@ -6,7 +6,7 @@ spec:
   capacity:
     storage: 5Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
-    path: /var/data/mongodb
+    path: "/opt/mongodb/data"
   storageClassName: microk8s-hostpath
