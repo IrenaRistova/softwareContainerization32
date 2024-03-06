@@ -3,24 +3,24 @@ import { PORT, mongoDBURL} from './config.js';
 import mongoose from 'mongoose';
 import productsRoute from './routes/productsRoute.js'
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 
 
+dotenv.config();
 const app = express();
+
+const MONGO_DB = process.env.MONGO_DB;
+const MONGO_HOST = process.env.MONGO_HOST;
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+
+const URI = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}/${MONGO_DB}?retryWrites=true&w=majority`;
+
 
 //Midleware for parsing request body (after error in poostman saying cannot read properties of undefined)
 app.use(express.json());
 
-//middleware gor handling CORS policy
-//Option 1: Allow all origins wiht default of cors()
 app.use(cors())
-
-//Option 2: ALlow Custom origins // now only clients with this origin can access server
-// app.use(cors({
-//   origin:'http://localhost:3001',
-//   methods: ['GET','POST','PUT','DELETE'],
-//   allowedHeaders:['Content-Type'],
-// })
-// );
 
 app.get('/', (request, response) => {
   console.log(request);
@@ -31,7 +31,7 @@ app.use('/products', productsRoute);
 
 
 mongoose
-  .connect(mongoDBURL)
+  .connect(URI)
   .then(() => {
     console.log('App connected to database');
     app.listen(PORT, () => {
