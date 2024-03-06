@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-api-deployment
+  namespace: webshop-app
+  labels:
+    app: backend-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-api
+  template:
+    metadata:
+      namespace: webshop-app
+      labels:
+        app: backend-api
+    spec:
+      containers:
+        - name: backend-container
+          image: localhost:32000/backend-api:v1
+          ports:
+            - containerPort: 6001
+          envFrom:
+            - configMapRef:
+                name: mongodb-configmap
+          env:
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_PASSWORD

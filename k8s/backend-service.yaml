@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-api-service
+  namespace: webshop-app
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 6001
+      targetPort: 6001
+  selector:
+    app: backend-api

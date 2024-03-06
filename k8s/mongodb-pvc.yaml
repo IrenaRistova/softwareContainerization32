@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+
+  name: mongodb-pvc
+  namespace: webshop-app
+  labels:
+    app: mongodb
+spec:
+  # storageClassName: microk8s-hostpath
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

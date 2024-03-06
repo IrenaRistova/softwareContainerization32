@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  namespace: webshop-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      namespace: webshop-app
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongo-container
+          image: mongo:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: mongodb-configmap
+          env:
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: MONGO_PASSWORD
+            - name: MONGODB_PASSWORD
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongodb
+      volumes:
+        - name: mongodb
+          persistentVolumeClaim:
+            claimName: mongodb-pvc
